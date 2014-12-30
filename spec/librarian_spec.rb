@@ -32,7 +32,7 @@ describe Librarian do
 
     describe 'comparing types' do
       context 'when :filename' do
-        subject { Librarian.new.dublicates(type: :filename) }
+        subject { Librarian.new.dublicates(compare: :filename) }
 
         let(:different_books) { %w(Maths/numbers_theory.pdf Other/jokes.pdf) }
         let(:dublicate_books) { %w(Maths/basic_theory.pdf Other/basic_theory.pdf) }
@@ -51,7 +51,7 @@ describe Librarian do
       end
 
       context 'when :sha1' do
-        subject { Librarian.new.dublicates(type: :sha1) }
+        subject { Librarian.new.dublicates(compare: :sha1) }
 
         let(:numbers_theory) do
           file = Tempfile.new([ 'numbers_theory', '.pdf' ])

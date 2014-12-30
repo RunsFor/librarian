@@ -13,8 +13,8 @@ class Librarian
 
   # Available types: [ :sha1, :sha2, :md5, :filename ]
   # @return Hash
-  def dublicates(type: :filename)
-    group_by(type, all).select { |_, books| books.size > 1 }
+  def dublicates(compare: :filename)
+    group_by(compare, all).select { |_, books| books.size > 1 }
   end
 
   def all
@@ -27,9 +27,9 @@ class Librarian
 
   private
 
-  def group_by(type, books)
+  def group_by(compare_type, books)
     books.inject({}) do |collector, book|
-      case type
+      case compare_type
       when :filename
         key = File.basename(book)
       when :md5
