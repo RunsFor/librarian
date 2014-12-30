@@ -1,0 +1,6 @@
+.vimrc
+
+*.swp
+*.swo
+
+coverage/
