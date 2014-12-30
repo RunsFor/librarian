@@ -33,13 +33,13 @@ class Librarian
       when :filename
         key = File.basename(book)
       when :md5
-        key = Digest::MD5.hexdigest(File.read(book))
+        key = Digest::MD5.file(book).hexdigest
       when :sha1
-        key = Digest::SHA1.hexdigest(File.read(book))
+        key = Digest::SHA1.file(book).hexdigest
       when :sha2
-        key = Digest::SHA2.hexdigest(File.read(book))
+        key = Digest::SHA2.file(book).hexdigest
       else
-        raise 'Wrong grouping type'
+        raise 'Wrong compare type'
       end
 
       if collector.has_key?(key)
